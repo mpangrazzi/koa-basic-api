@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+
+var Log = require('log');
+var app = require('../app');
+
+var env = process.env.NODE_ENV || 'development';
+var port = process.env.PORT || 3000;
+
+
+// boot (IPv4)
+
+app.listen(port, '0.0.0.0', function () {
+  Log.boot('www', '[%s] server is listening on port %s', env, port);
+});
