@@ -4,29 +4,29 @@
   "description": "Koa Basic API Template",
   "main": "bin/www",
   "scripts": {
-    "dev": "node bin/www",
-    "test": "./node_modules/.bin/tape test/**/*.js | ./node_modules/.bin/tap-spec"
+    "start": "node bin/www",
+    "dev": "./node_modules/.bin/supervisor bin/www",
+    "test": "ava --verbose",
+    "lint": "./node_modules/.bin/standard"
   },
   "author": "Michele Pangrazzi <xmikex83@gmail.com>",
   "private": true,
   "devDependencies": {
-    "superagent": "^1.7.2",
-    "tap-spec": "^4.1.1",
-    "tape": "^4.4.0"
+    "ava": "^0.16.0",
+    "standard": "^8.2.0",
+    "superagent": "^2.3.0",
+    "supervisor": "^0.11.0"
+  },
+  "engines": {
+    "node": "6.x.x"
   },
   "dependencies": {
     "co": "^4.6.0",
     "debug": "^2.2.0",
-    "koa": "^1.1.2",
-    "koa-compress": "^1.0.8",
+    "koa": "^1.2.4",
+    "koa-compress": "^1.0.9",
     "koa-logger": "^1.3.0",
-    "koa-router": "^5.3.0",
-    "npmlog": "^2.0.2"
-  },
-  "jshintConfig": {
-    "multistr": true,
-    "esnext": true,
-    "expr": true,
-    "noyield": true
+    "koa-router": "^5.4.0",
+    "npmlog": "^4.0.0"
   }
 }

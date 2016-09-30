@@ -1,48 +1,35 @@
+import http from 'http'
+import test from 'ava'
+import request from 'superagent'
 
-/**
- * Module dependencies
- */
+import app from '../app'
 
-const http = require('http');
-const test = require('tape');
-const before = require('tape');
-const after = require('tape');
-const request = require('superagent');
-
-const PORT = 3000;
-var server = http.createServer(require('../app').callback());
+const PORT = 3000
+const server = http.createServer(app.callback())
 
 
-before('Start API server', function (t) {
-
-  server.listen(PORT, function () {
-    t.pass('server is listening', PORT);
-    t.end();
-  });
-
-});
+test.before.cb('Start API server', t => {
+  server.listen(PORT, () => {
+    t.pass('server is listening', PORT)
+    t.end()
+  })
+})
 
 
-test('Should respond correctly', function (t) {
-
+test.cb('Should respond correctly', t => {
   request
     .get(`http://localhost:${PORT}/api`)
-    .end(function (err, res) {
-
-      t.equal(res.status, 200, 'HTTP response code');
-      t.deepLooseEqual(res.body, { status: 'ok' }, 'HTTP response body');
-      t.end();
-
-    });
-
-});
+    .end((err, res) => {
+      t.is(res.status, 200, 'HTTP response code')
+      t.deepEqual(res.body, { status: 'ok' }, 'HTTP response body')
+      t.end()
+    })
+})
 
 
-after('Close API server', function (t) {
-
-  server.close(function () {
-    t.pass('server is closed');
-    t.end();
-  });
-
-});
+test.after.cb('Close API server', t => {
+  server.close(() => {
+    t.pass('server is closed')
+    t.end()
+  })
+})

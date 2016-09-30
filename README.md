@@ -41,9 +41,7 @@ DEBUG=* npm run dev
 
 ### Test
 
-I chose [tape](https://github.com/substack/tape), which is a very flexible test framework with [tap-spec](https://github.com/scottcorgan/tap-spec) report
-
-In the provided example, you'll see how you can easily achieve [Mocha](https://mochajs.org)'s `before()` and `after()` behaviuor using tape, as Eric Elliot suggests in [a great post on tape](https://medium.com/javascript-scene/why-i-use-tape-instead-of-mocha-so-should-you-6aa105d8eaf4).
+I chose [ava](https://github.com/avajs/ava), which is a very nice and flexible test runner. Also, it enables you write your tests in ES6 :)
 
 Run tests with:
 
